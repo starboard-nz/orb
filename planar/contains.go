@@ -60,6 +60,103 @@ func MultiPolygonContains(mp orb.MultiPolygon, point orb.Point) bool {
 	return false
 }
 
+// PolygonBounds computes bounds for a slice of Polygons and returns a slice of orb.Bounds
+// of the same length as poly.
+func PolygonBounds(poly orb.Polygon) []orb.Bound {
+
+	bounds := make([]orb.Bound, len(poly))
+	for i, ring := range poly {
+		bounds[i] = ring.Bound()
+	}
+	return bounds
+}
+
+// MultiPolygonBounds computes bounds for a MultiPolygon and returns a 2 dimensional slice of orb.Bounds,
+// one slice for each Polygon of the MultiPolygon.
+func MultiPolygonBounds(mp orb.MultiPolygon) [][]orb.Bound {
+
+	bounds := make([][]orb.Bound, len(mp))
+	for i, poly := range mp {
+		bounds[i] = PolygonBounds(poly)
+	}
+	return bounds
+}
+
+// RingWithBoundContains returns true if the point is inside a ring with the given bound.
+// This is an optimization of RingContains that avoids re-calculating the bound for each
+// point that is tested.
+// Points on the boundary are considered in.
+func RingWithBoundContains(r orb.Ring, bound orb.Bound, point orb.Point) bool {
+
+	if bound.IsZero() {
+		bound = r.Bound()
+	}
+
+	if !bound.Contains(point) {
+		return false
+	}
+
+	c, on := rayIntersect(point, r[0], r[len(r)-1])
+	if on {
+		return true
+	}
+
+	for i := 0; i < len(r)-1; i++ {
+		inter, on := rayIntersect(point, r[i], r[i+1])
+		if on {
+			return true
+		}
+
+		if inter {
+			c = !c
+		}
+	}
+
+	return c
+}
+
+// PolygonWithBoundContains checks if the point is within the polygon with the given bounds.
+// The bounds can be calculated using PolygonBounds().
+// This is an optimization of PolygonContains that avoids re-calculating the bounds for each point
+// that is tested.
+// Points on the boundary are considered in.
+func PolygonWithBoundContains(poly orb.Polygon, bounds []orb.Bound, point orb.Point) bool {
+	if bounds == nil {
+		bounds = PolygonBounds(poly)
+	}
+
+	if !RingWithBoundContains(poly[0], bounds[0], point) {
+		return false
+	}
+
+	for i := 1; i < len(poly); i++ {
+		if RingWithBoundContains(poly[i], bounds[i], point) {
+			return false
+		}
+	}
+
+	return true
+}
+
+// MultiPolygonWithBoundContains checks if the point is within the multi-polygon with the given bounds.
+// The multiBounds can be calculated using MultiPolygonBounds().
+// This is an optimization of MultiPolygonContains that avoids re-calculating the bounds for each point
+// that is tested.
+// Points on the boundary are considered in.
+func MultiPolygonWithBoundContains(mp orb.MultiPolygon, multiBounds [][]orb.Bound, point orb.Point) bool {
+	if multiBounds == nil {
+		multiBounds = MultiPolygonBounds(mp)
+	}
+
+	for i, poly := range mp {
+		if PolygonWithBoundContains(poly, multiBounds[i], point) {
+			return true
+		}
+	}
+
+	return false
+}
+
 // Original implementation: http://rosettacode.org/wiki/Ray-casting_algorithm#Go
 func rayIntersect(p, s, e orb.Point) (intersects, on bool) {
 	if s[0] > e[0] {
