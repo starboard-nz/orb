@@ -1,4 +1,4 @@
-module github.com/paulmach/orb
+module github.com/xerra-eo/orb
 
 go 1.13
 
