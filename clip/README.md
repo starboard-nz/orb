@@ -1,4 +1,4 @@
-orb/clip [![Godoc Reference](https://godoc.org/github.com/paulmach/orb/clip?status.svg)](https://godoc.org/github.com/paulmach/orb/clip)
+orb/clip [![Godoc Reference](https://godoc.org/github.com/xerra-eo/orb/clip?status.svg)](https://godoc.org/github.com/xerra-eo/orb/clip)
 ========
 
 Package orb/clip provides functions for clipping lines and polygons to a bounding box.

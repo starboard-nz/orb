@@ -3,7 +3,7 @@ package planar
 import (
 	"testing"
 
-	"github.com/paulmach/orb"
+	"github.com/xerra-eo/orb"
 )
 
 func TestCentroidArea(t *testing.T) {

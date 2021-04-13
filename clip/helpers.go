@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/paulmach/orb"
+	"github.com/xerra-eo/orb"
 )
 
 // Geometry will clip the geometry to the bounding box using the

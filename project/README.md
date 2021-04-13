@@ -1,4 +1,4 @@
-orb/project [![Godoc Reference](https://godoc.org/github.com/paulmach/orb/project?status.svg)](https://godoc.org/github.com/paulmach/orb/project)
+orb/project [![Godoc Reference](https://godoc.org/github.com/xerra-eo/orb/project?status.svg)](https://godoc.org/github.com/xerra-eo/orb/project)
 ===========
 
 Package orb/project has helper function for projection geometries.

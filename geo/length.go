@@ -1,8 +1,8 @@
 package geo
 
 import (
-	"github.com/paulmach/orb"
-	"github.com/paulmach/orb/internal/length"
+	"github.com/xerra-eo/orb"
+	"github.com/xerra-eo/orb/internal/length"
 )
 
 // Length returns the length of the boundary of the geometry

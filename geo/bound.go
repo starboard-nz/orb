@@ -3,7 +3,7 @@ package geo
 import (
 	"math"
 
-	"github.com/paulmach/orb"
+	"github.com/xerra-eo/orb"
 )
 
 // NewBoundAroundPoint creates a new bound given a center point,

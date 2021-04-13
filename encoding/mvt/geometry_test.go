@@ -5,9 +5,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/paulmach/orb"
-	"github.com/paulmach/orb/encoding/mvt/vectortile"
 	"github.com/paulmach/protoscan"
+	"github.com/xerra-eo/orb"
+	"github.com/xerra-eo/orb/encoding/mvt/vectortile"
 )
 
 func TestGeometry_Point(t *testing.T) {

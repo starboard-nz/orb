@@ -1,9 +1,9 @@
 package mvt
 
 import (
-	"github.com/paulmach/orb/geojson"
-	"github.com/paulmach/orb/maptile"
-	"github.com/paulmach/orb/project"
+	"github.com/xerra-eo/orb/geojson"
+	"github.com/xerra-eo/orb/maptile"
+	"github.com/xerra-eo/orb/project"
 )
 
 const (

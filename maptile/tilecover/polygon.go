@@ -3,8 +3,8 @@ package tilecover
 import (
 	"sort"
 
-	"github.com/paulmach/orb"
-	"github.com/paulmach/orb/maptile"
+	"github.com/xerra-eo/orb"
+	"github.com/xerra-eo/orb/maptile"
 )
 
 // Ring creates a tile cover for the ring.

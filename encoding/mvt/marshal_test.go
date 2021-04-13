@@ -8,9 +8,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/paulmach/orb"
-	"github.com/paulmach/orb/geojson"
-	"github.com/paulmach/orb/maptile"
+	"github.com/xerra-eo/orb"
+	"github.com/xerra-eo/orb/geojson"
+	"github.com/xerra-eo/orb/maptile"
 )
 
 func TestMarshalMarshalGzipped_Full(t *testing.T) {

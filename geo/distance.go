@@ -3,7 +3,7 @@ package geo
 import (
 	"math"
 
-	"github.com/paulmach/orb"
+	"github.com/xerra-eo/orb"
 )
 
 // Distance returns the distance between two points on the earth.

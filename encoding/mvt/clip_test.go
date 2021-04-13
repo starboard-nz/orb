@@ -1,10 +1,11 @@
 package mvt
 
 import (
-	"github.com/paulmach/orb"
-	"github.com/paulmach/orb/geojson"
 	"reflect"
 	"testing"
+
+	"github.com/xerra-eo/orb"
+	"github.com/xerra-eo/orb/geojson"
 )
 
 func TestLayersClip(t *testing.T) {

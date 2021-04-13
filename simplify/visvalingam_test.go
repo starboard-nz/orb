@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/paulmach/orb"
+	"github.com/xerra-eo/orb"
 )
 
 func TestVisvalingamThreshold(t *testing.T) {

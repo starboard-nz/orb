@@ -7,10 +7,10 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/paulmach/orb"
-	"github.com/paulmach/orb/encoding/mvt/vectortile"
-	"github.com/paulmach/orb/geojson"
 	"github.com/paulmach/protoscan"
+	"github.com/xerra-eo/orb"
+	"github.com/xerra-eo/orb/encoding/mvt/vectortile"
+	"github.com/xerra-eo/orb/geojson"
 )
 
 var ErrDataIsGZipped = errors.New("failed to unmarshal, data possibly gzipped")

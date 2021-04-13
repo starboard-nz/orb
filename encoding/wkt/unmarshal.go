@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/paulmach/orb"
+	"github.com/xerra-eo/orb"
 )
 
 var (

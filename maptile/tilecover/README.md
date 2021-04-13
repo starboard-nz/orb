@@ -1,4 +1,4 @@
-orb/maptile/tilecover [![Godoc Reference](https://godoc.org/github.com/paulmach/orb/maptile/tilecover?status.svg)](https://godoc.org/github.com/paulmach/orb/maptile/tilecover)
+orb/maptile/tilecover [![Godoc Reference](https://godoc.org/github.com/xerra-eo/orb/maptile/tilecover?status.svg)](https://godoc.org/github.com/xerra-eo/orb/maptile/tilecover)
 =====================
 
 Package `tilecover` computes the covering set of tiles for an `orb.Geometry`.

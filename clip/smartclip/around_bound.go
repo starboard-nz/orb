@@ -3,7 +3,7 @@ package smartclip
 import (
 	"sort"
 
-	"github.com/paulmach/orb"
+	"github.com/xerra-eo/orb"
 )
 
 // aroundBound will connect the endpoints of the linestring provided
