@@ -1,4 +1,4 @@
-encoding/wkb [![Godoc Reference](https://godoc.org/github.com/paulmach/orb?status.svg)](https://godoc.org/github.com/paulmach/orb/encoding/wkb)
+encoding/wkb [![Godoc Reference](https://godoc.org/github.com/xerra-eo/orb?status.svg)](https://godoc.org/github.com/xerra-eo/orb/encoding/wkb)
 ============
 
 This package provides encoding and decoding of [WKB](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary)

@@ -3,7 +3,7 @@ package planar
 import (
 	"math"
 
-	"github.com/paulmach/orb"
+	"github.com/xerra-eo/orb"
 )
 
 // Distance returns the distance between two points in 2d euclidean geometry.

@@ -3,7 +3,7 @@ package wkb
 import (
 	"io"
 
-	"github.com/paulmach/orb"
+	"github.com/xerra-eo/orb"
 )
 
 func readCollection(r io.Reader, order byteOrder, buf []byte) (orb.Collection, error) {

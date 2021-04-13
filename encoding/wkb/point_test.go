@@ -3,7 +3,7 @@ package wkb
 import (
 	"testing"
 
-	"github.com/paulmach/orb"
+	"github.com/xerra-eo/orb"
 )
 
 var (

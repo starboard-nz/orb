@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/paulmach/orb"
-	"github.com/paulmach/orb/planar"
-	"github.com/paulmach/orb/resample"
+	"github.com/xerra-eo/orb"
+	"github.com/xerra-eo/orb/planar"
+	"github.com/xerra-eo/orb/resample"
 )
 
 func BenchmarkToMorePoints(b *testing.B) {

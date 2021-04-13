@@ -1,4 +1,4 @@
-orb/geo [![Godoc Reference](https://godoc.org/github.com/paulmach/orb/geo?status.svg)](https://godoc.org/github.com/paulmach/orb/geo)
+orb/geo [![Godoc Reference](https://godoc.org/github.com/xerra-eo/orb/geo?status.svg)](https://godoc.org/github.com/xerra-eo/orb/geo)
 =======
 
 The geometries defined in the `orb` package are generic 2d geometries.

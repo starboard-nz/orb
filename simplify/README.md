@@ -1,4 +1,4 @@
-orb/simplify [![Godoc Reference](https://godoc.org/github.com/paulmach/orb?status.svg)](https://godoc.org/github.com/paulmach/orb/simplify)
+orb/simplify [![Godoc Reference](https://godoc.org/github.com/xerra-eo/orb?status.svg)](https://godoc.org/github.com/xerra-eo/orb/simplify)
 ============
 
 This package implements several reducing/simplifing function for `orb.Geometry` types.
