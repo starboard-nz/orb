@@ -1,16 +1,38 @@
 package orb
 
 import (
+	"fmt"
 	"math"
 )
 
+const (
+	EAST_MAX  = 180.
+	WEST_MAX  = -180.
+	NORTH_MAX = 90.
+	SOUTH_MAX = -90.
+)
+
 var emptyBound = Bound{Min: Point{1, 1}, Max: Point{-1, -1}}
+
+// MultiBounds is a slice of PolyBounds that is used to contain
+// bounds of each Polygon within a MultiPolygon.
+type MultiBounds []PolyBounds
+
+// PolyBounds is a slice that represent the bounds of each
+// geofence of a polygon, the first being the polygon's exterior,
+// and the rest being each hole within the polygon.
+type PolyBounds []Bound
 
 // A Bound represents a closed box or rectangle.
 // To create a bound with two points you can do something like:
 //	orb.MultiPoint{p1, p2}.Bound()
 type Bound struct {
 	Min, Max Point
+}
+
+// A bound representation useful for rendering bounding boxes.
+type NWSEBound struct {
+	NW, SE Point
 }
 
 // GeoJSONType returns the GeoJSON type for the object.
@@ -169,4 +191,101 @@ func (b Bound) Bound() Bound {
 // Equal returns if two bounds are equal.
 func (b Bound) Equal(c Bound) bool {
 	return b.Min == c.Min && b.Max == c.Max
+}
+
+// PolyBounds computes bounds for a slice of Polygons and returns a slice of orb.Bounds of
+// the same length as poly. The slice's first element bounds the exterior polgon and each proceeding
+// element bounds each hole within the polygon.
+func PolygonBounds(poly Polygon) PolyBounds {
+	bounds := make(PolyBounds, len(poly))
+	for i, ring := range poly {
+		bounds[i] = ring.Bound()
+	}
+	return bounds
+}
+
+// MultiPolyBounds computes bounds for a MultiPolygon and returns a 2 dimensional slice of orb.Bounds,
+// one slice for each Polygon of the MultiPolygon.
+func MultiPolyBounds(mp MultiPolygon) MultiBounds {
+	bounds := make(MultiBounds, len(mp))
+	for i, poly := range mp {
+		bounds[i] = PolygonBounds(poly)
+	}
+	return bounds
+}
+
+func AOIBounds() {
+
+}
+
+// CaptureExteriorBounds collects the exteroir bounds of each polygon from processed bounds
+// of every polygon in a multi-polygon.
+func CaptureExteriorBounds(bounds MultiBounds) []Bound {
+
+	results := make([]Bound, len(bounds))
+	for i, geoBound := range bounds {
+		results[i] = geoBound[0]
+	}
+	return results
+}
+
+// MultiPolygonExteriorBounds collects the exterior bounds of each polygon in multi-polygon,
+// ignoring the bounds of polygon holes.
+func MultiPolygonExteriorBounds(mp MultiPolygon) []Bound {
+	bounds := MultiPolyBounds(mp)
+	return CaptureExteriorBounds(bounds)
+}
+
+// BoundToNWSE covnerts a bound from the traditional format to an alternative bound format,
+// useful for rendering.
+func BoundToNWSE(bound Bound) NWSEBound {
+
+	nLat := bound.Max.Lat()
+	eLon := bound.Max.Lon()
+	sLat := bound.Min.Lat()
+	wLon := bound.Min.Lon()
+
+	return NWSEBound{
+		NW: Point{
+			nLat, wLon,
+		},
+		SE: Point{
+			sLat, eLon,
+		},
+	}
+}
+
+// AntimeridianBounds finds the bounds of a multi-polygon which crosses the anti-meridian.
+// An error occurs if the multi-polygon has not been found to be split across the anti-meridian.
+func AntimeridianBounds(mp MultiPolygon) (*Bound, error) {
+
+	crossedAnti := false
+	eLon, wLon := WEST_MAX, EAST_MAX
+	nLat, sLat := SOUTH_MAX, NORTH_MAX
+	exBounds := MultiPolygonExteriorBounds(mp)
+
+	for _, bound := range exBounds {
+		if bound.Min.Lon() == WEST_MAX {
+			crossedAnti = true
+		}
+		nLat = math.Max(nLat, bound.Max.Lat())
+		sLat = math.Min(sLat, bound.Min.Lat())
+
+		if !crossedAnti {
+			wLon = math.Min(wLon, bound.Min.Lon())
+		} else {
+			eLon = math.Max(eLon, bound.Max.Lon())
+		}
+	}
+
+	if !crossedAnti {
+		return nil, fmt.Errorf("expected split MultiPolygon across anti-meridian but is not found to be")
+	}
+
+	antiBounds := Bound{
+		Min: Point{eLon, sLat},
+		Max: Point{wLon, nLat},
+	}
+
+	return &antiBounds, nil
 }
