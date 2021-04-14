@@ -214,9 +214,9 @@ func MultiPolygonBounds(mp MultiPolygon) MultiBounds {
 	return bounds
 }
 
-// CaptureExteriorBounds collects the exteroir bounds of each polygon from processed bounds
+// ExteriorBounds collects the exteroir bounds of each polygon from processed bounds
 // of every polygon in a multi-polygon.
-func CaptureExteriorBounds(bounds MultiBounds) []Bound {
+func ExteriorBounds(bounds MultiBounds) []Bound {
 	results := make([]Bound, len(bounds))
 	for i, geoBound := range bounds {
 		results[i] = geoBound[0]
@@ -227,20 +227,28 @@ func CaptureExteriorBounds(bounds MultiBounds) []Bound {
 // BoundToNWSE covnerts a bound from the traditional format to an alternative bound format,
 // useful for rendering.
 func BoundToNWSE(bound Bound) NWSEBound {
-
-	nLat := bound.Max.Lat()
-	eLon := bound.Max.Lon()
-	sLat := bound.Min.Lat()
-	wLon := bound.Min.Lon()
-
 	return NWSEBound{
-		NW: Point{
-			nLat, wLon,
-		},
-		SE: Point{
-			sLat, eLon,
-		},
+		NW: bound.LeftTop(),
+		SE: bound.RightBottom(),
 	}
+}
+
+// MultiPolygonBounds computes bounds for a MultiPolygon and returns a 2 dimensional slice of orb.Bounds,
+// one slice for each Polygon of the MultiPolygon.
+func MultiPolygonFullBounds(mp MultiPolygon) Bound {
+	if len(mp) == 0 {
+		return emptyBound
+	}
+
+	bounds := MultiPolygonBounds(mp)
+	exBounds := ExteriorBounds(bounds)
+
+	bound := exBounds[0]
+	for _, b := range exBounds {
+		bound.Union(b)
+	}
+
+	return bound
 }
 
 // AntimeridianBounds finds the bounds of a multi-polygon which crosses the anti-meridian.
@@ -252,7 +260,7 @@ func AntimeridianBounds(mp MultiPolygon) (*Bound, error) {
 	nLat, sLat := SOUTH_MAX, NORTH_MAX
 
 	bounds := MultiPolygonBounds(mp)
-	exBounds := CaptureExteriorBounds(bounds)
+	exBounds := ExteriorBounds(bounds)
 
 	for _, bound := range exBounds {
 
