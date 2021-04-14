@@ -204,9 +204,9 @@ func PolygonBounds(poly Polygon) PolyBounds {
 	return bounds
 }
 
-// MultiPolyBounds computes bounds for a MultiPolygon and returns a 2 dimensional slice of orb.Bounds,
+// MultiPolygonBounds computes bounds for a MultiPolygon and returns a 2 dimensional slice of orb.Bounds,
 // one slice for each Polygon of the MultiPolygon.
-func MultiPolyBounds(mp MultiPolygon) MultiBounds {
+func MultiPolygonBounds(mp MultiPolygon) MultiBounds {
 	bounds := make(MultiBounds, len(mp))
 	for i, poly := range mp {
 		bounds[i] = PolygonBounds(poly)
@@ -222,13 +222,6 @@ func CaptureExteriorBounds(bounds MultiBounds) []Bound {
 		results[i] = geoBound[0]
 	}
 	return results
-}
-
-// MultiPolygonExteriorBounds collects the exterior bounds of each polygon in multi-polygon,
-// ignoring the bounds of polygon holes.
-func MultiPolygonExteriorBounds(mp MultiPolygon) []Bound {
-	bounds := MultiPolyBounds(mp)
-	return CaptureExteriorBounds(bounds)
 }
 
 // BoundToNWSE covnerts a bound from the traditional format to an alternative bound format,
@@ -257,7 +250,9 @@ func AntimeridianBounds(mp MultiPolygon) (*Bound, error) {
 	crossedAnti := false
 	eLon, wLon := WEST_MAX, EAST_MAX
 	nLat, sLat := SOUTH_MAX, NORTH_MAX
-	exBounds := MultiPolygonExteriorBounds(mp)
+
+	bounds := MultiPolygonBounds(mp)
+	exBounds := CaptureExteriorBounds(bounds)
 
 	for _, bound := range exBounds {
 

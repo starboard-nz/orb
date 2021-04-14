@@ -117,13 +117,13 @@ func PolygonWithBoundContains(poly orb.Polygon, bounds orb.PolyBounds, point orb
 }
 
 // MultiPolygonWithBoundContains checks if the point is within the multi-polygon with the given bounds.
-// The multiBounds can be calculated using MultiPolyBounds().
+// The multiBounds can be calculated using MultiPolygonBounds().
 // This is an optimization of MultiPolygonContains that avoids re-calculating the bounds for each point
 // that is tested.
 // Points on the boundary are considered in.
 func MultiPolygonWithBoundContains(mp orb.MultiPolygon, multiBounds orb.MultiBounds, point orb.Point) bool {
 	if multiBounds == nil {
-		multiBounds = orb.MultiPolyBounds(mp)
+		multiBounds = orb.MultiPolygonBounds(mp)
 	}
 
 	for i, poly := range mp {
