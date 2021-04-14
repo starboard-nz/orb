@@ -214,14 +214,9 @@ func MultiPolyBounds(mp MultiPolygon) MultiBounds {
 	return bounds
 }
 
-func AOIBounds() {
-
-}
-
 // CaptureExteriorBounds collects the exteroir bounds of each polygon from processed bounds
 // of every polygon in a multi-polygon.
 func CaptureExteriorBounds(bounds MultiBounds) []Bound {
-
 	results := make([]Bound, len(bounds))
 	for i, geoBound := range bounds {
 		results[i] = geoBound[0]
