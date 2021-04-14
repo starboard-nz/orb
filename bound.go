@@ -260,13 +260,19 @@ func AntimeridianBounds(mp MultiPolygon) (*Bound, error) {
 	exBounds := MultiPolygonExteriorBounds(mp)
 
 	for _, bound := range exBounds {
-		if bound.Min.Lon() == WEST_MAX {
+
+		// not completely accurate but best that can be done until split polygons have interpolated positions at -180. / 180. longitude
+		acrossAnti := bound.Min.Lon() < 0.
+		if acrossAnti {
 			crossedAnti = true
 		}
+
+		fmt.Println(bound)
+
 		nLat = math.Max(nLat, bound.Max.Lat())
 		sLat = math.Min(sLat, bound.Min.Lat())
 
-		if !crossedAnti {
+		if !acrossAnti {
 			wLon = math.Min(wLon, bound.Min.Lon())
 		} else {
 			eLon = math.Max(eLon, bound.Max.Lon())
@@ -278,8 +284,8 @@ func AntimeridianBounds(mp MultiPolygon) (*Bound, error) {
 	}
 
 	antiBounds := Bound{
-		Min: Point{eLon, sLat},
-		Max: Point{wLon, nLat},
+		Min: Point{wLon, sLat},
+		Max: Point{eLon, nLat},
 	}
 
 	return &antiBounds, nil
