@@ -243,12 +243,12 @@ func MultiPolygonFullBounds(mp MultiPolygon) Bound {
 	bounds := MultiPolygonBounds(mp)
 	exBounds := ExteriorBounds(bounds)
 
-	bound := exBounds[0]
-	for _, b := range exBounds {
-		bound.Union(b)
+	b := exBounds[0]
+	for _, bound := range exBounds {
+		b = b.Union(bound)
 	}
 
-	return bound
+	return b
 }
 
 // AntimeridianBounds finds the bounds of a multi-polygon which crosses the anti-meridian.
