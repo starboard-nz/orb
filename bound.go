@@ -233,9 +233,9 @@ func BoundToNWSE(bound Bound) NWSEBound {
 	}
 }
 
-// MultiPolygonBounds computes bounds for a MultiPolygon and returns a 2 dimensional slice of orb.Bounds,
+// FullBounds computes bounds for a MultiPolygon and returns a 2 dimensional slice of orb.Bounds,
 // one slice for each Polygon of the MultiPolygon.
-func MultiPolygonFullBounds(mp MultiPolygon) Bound {
+func FullBounds(mp MultiPolygon) Bound {
 	if len(mp) == 0 {
 		return emptyBound
 	}
