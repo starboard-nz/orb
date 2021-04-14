@@ -267,8 +267,6 @@ func AntimeridianBounds(mp MultiPolygon) (*Bound, error) {
 			crossedAnti = true
 		}
 
-		fmt.Println(bound)
-
 		nLat = math.Max(nLat, bound.Max.Lat())
 		sLat = math.Min(sLat, bound.Min.Lat())
 
