@@ -254,6 +254,9 @@ func MultiPolygonFullBounds(mp MultiPolygon) Bound {
 // AntimeridianBounds finds the bounds of a multi-polygon which crosses the anti-meridian.
 // An error occurs if the multi-polygon has not been found to be split across the anti-meridian.
 func AntimeridianBounds(mp MultiPolygon) (*Bound, error) {
+	if len(mp) == 0 {
+		return nil, fmt.Errorf("cannot compute boundary of MultiPolygon with no Polygons")
+	}
 
 	crossedAnti := false
 	eLon, wLon := WEST_MAX, EAST_MAX
