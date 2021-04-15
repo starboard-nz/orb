@@ -98,9 +98,9 @@ func RingWithBoundContains(r orb.Ring, bound orb.Bound, point orb.Point) bool {
 // This is an optimization of PolygonContains that avoids re-calculating the bounds for each point
 // that is tested.
 // Points on the boundary are considered in.
-func PolygonWithBoundContains(poly orb.Polygon, bounds orb.PolyBounds, point orb.Point) bool {
+func PolygonWithBoundContains(poly orb.Polygon, bounds orb.PolygonBounds, point orb.Point) bool {
 	if bounds == nil {
-		bounds = orb.PolygonBounds(poly)
+		bounds = orb.PolygonBoundsFromPolygon(poly)
 	}
 
 	if !RingWithBoundContains(poly[0], bounds[0], point) {
@@ -121,9 +121,9 @@ func PolygonWithBoundContains(poly orb.Polygon, bounds orb.PolyBounds, point orb
 // This is an optimization of MultiPolygonContains that avoids re-calculating the bounds for each point
 // that is tested.
 // Points on the boundary are considered in.
-func MultiPolygonWithBoundContains(mp orb.MultiPolygon, multiBounds orb.MultiBounds, point orb.Point) bool {
+func MultiPolygonWithBoundContains(mp orb.MultiPolygon, multiBounds orb.MultiPolygonBounds, point orb.Point) bool {
 	if multiBounds == nil {
-		multiBounds = orb.MultiPolygonBounds(mp)
+		multiBounds = orb.MultiPolygonBoundsFromMultiPolygon(mp)
 	}
 
 	for i, poly := range mp {
