@@ -7,10 +7,10 @@ import (
 var emptyBound = Bound{Min: Point{1, 1}, Max: Point{-1, -1}}
 
 // MultiPolygonBounds is a slice of PolygonBounds that is used to
-// contain bounds of each Polygon within a MultiPolygon.
+// contain bounds of each polygon within a multi-polygon.
 type MultiPolygonBounds []PolygonBounds
 
-// PolygonBounds is a slice that represent the bounds of each
+// PolygonBounds is a slice that represents the bounds of each
 // geofence of a polygon, the first being the polygon's exterior,
 // and the rest being each hole within the polygon.
 type PolygonBounds []Bound
@@ -180,9 +180,9 @@ func (b Bound) Equal(c Bound) bool {
 	return b.Min == c.Min && b.Max == c.Max
 }
 
-// PolygonBoundsFromPolygon computes bounds for a slice of Polygons and returns a slice
-// of orb.Bounds of the same length as poly. The slice's first element bounds the exterior
-// polgon and each proceeding element bounds each hole within the polygon.
+// PolygonBoundsFromPolygon finds each bound for a slice of Polygons and returns a slice
+// of these bounds (PolygonBounds). The slice's first element bounds the polygon's exterior
+// with each proceeding element representing the bounds of holes within the polygon.
 func PolygonBoundsFromPolygon(poly Polygon) PolygonBounds {
 	bounds := make(PolygonBounds, len(poly))
 	for i, ring := range poly {
@@ -191,8 +191,9 @@ func PolygonBoundsFromPolygon(poly Polygon) PolygonBounds {
 	return bounds
 }
 
-// MultiPolygonBoundsFromMultiPolygon computes bounds for a MultiPolygon and returns a 2
-// dimensional slice of orb.Bounds, one slice for each Polygon of the MultiPolygon.
+// MultiPolygonBoundsFromMultiPolygon computes the bounds of a multi-polygon, returning
+// MultiPolygonBounds. This is a type of slice where element represents the PolygonBounds
+// for each polygon of a multi-polygon.
 func MultiPolygonBoundsFromMultiPolygon(mp MultiPolygon) MultiPolygonBounds {
 	bounds := make(MultiPolygonBounds, len(mp))
 	for i, poly := range mp {
