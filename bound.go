@@ -4,13 +4,6 @@ import (
 	"math"
 )
 
-const (
-	EAST_MAX  = 180.
-	WEST_MAX  = -180.
-	NORTH_MAX = 90.
-	SOUTH_MAX = -90.
-)
-
 var emptyBound = Bound{Min: Point{1, 1}, Max: Point{-1, -1}}
 
 // MultiPolygonBounds is a slice of PolygonBounds that is used to
