@@ -94,7 +94,7 @@ func RingWithBoundContains(r orb.Ring, bound orb.Bound, point orb.Point) bool {
 }
 
 // PolygonWithBoundContains checks if the point is within the polygon with the given bounds.
-// The bounds can be calculated using PolyBounds().
+// The bounds can be calculated using PolygonBoundsFromPolygon().
 // This is an optimization of PolygonContains that avoids re-calculating the bounds for each point
 // that is tested.
 // Points on the boundary are considered in.
@@ -117,7 +117,7 @@ func PolygonWithBoundContains(poly orb.Polygon, bounds orb.PolygonBounds, point 
 }
 
 // MultiPolygonWithBoundContains checks if the point is within the multi-polygon with the given bounds.
-// The multiBounds can be calculated using MultiPolygonBounds().
+// The multiBounds can be calculated using MultiPolygonBoundsFromMultiPolygon().
 // This is an optimization of MultiPolygonContains that avoids re-calculating the bounds for each point
 // that is tested.
 // Points on the boundary are considered in.
