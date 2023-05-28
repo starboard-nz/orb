@@ -3,7 +3,7 @@ package wkt
 import (
 	"testing"
 
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 func TestMarshalString(t *testing.T) {

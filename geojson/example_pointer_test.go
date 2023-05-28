@@ -3,10 +3,10 @@ package geojson_test
 import (
 	"fmt"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/geojson"
-	"github.com/xerra-eo/orb/planar"
-	"github.com/xerra-eo/orb/quadtree"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/geojson"
+	"github.com/starboard-nz/orb/planar"
+	"github.com/starboard-nz/orb/quadtree"
 )
 
 type CentroidPoint struct {

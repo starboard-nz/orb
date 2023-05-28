@@ -3,9 +3,9 @@ package mvt
 import (
 	"testing"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/geojson"
-	"github.com/xerra-eo/orb/simplify"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/geojson"
+	"github.com/starboard-nz/orb/simplify"
 )
 
 func TestLayerSimplify(t *testing.T) {

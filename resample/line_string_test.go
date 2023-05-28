@@ -3,8 +3,8 @@ package resample
 import (
 	"testing"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/planar"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/planar"
 )
 
 func TestResample(t *testing.T) {

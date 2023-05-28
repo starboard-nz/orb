@@ -4,8 +4,8 @@ package tilecover
 import (
 	"fmt"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/maptile"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/maptile"
 )
 
 // Geometry returns the covering set of tiles for the given geometry.

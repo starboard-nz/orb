@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 // Area returns the area of the geometry on the earth.

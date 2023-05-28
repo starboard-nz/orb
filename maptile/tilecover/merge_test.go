@@ -3,7 +3,7 @@ package tilecover
 import (
 	"testing"
 
-	"github.com/xerra-eo/orb/maptile"
+	"github.com/starboard-nz/orb/maptile"
 )
 
 func TestMergeUp(t *testing.T) {

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 func TestNewFeature(t *testing.T) {

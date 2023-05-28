@@ -1,7 +1,7 @@
 package smartclip
 
 import (
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 var flips = []string{

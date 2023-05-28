@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 // Area returns the area of the geometry in the 2d plane.

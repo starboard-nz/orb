@@ -3,7 +3,7 @@ package simplify
 import (
 	"math"
 
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 var _ orb.Simplifier = &VisvalingamSimplifier{}

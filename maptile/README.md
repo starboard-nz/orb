@@ -1,4 +1,4 @@
-orb/tile [![Godoc Reference](https://godoc.org/github.com/xerra-eo/orb/maptile?status.svg)](https://godoc.org/github.com/xerra-eo/orb/maptile)
+orb/tile [![Godoc Reference](https://godoc.org/github.com/starboard-nz/orb/maptile?status.svg)](https://godoc.org/github.com/starboard-nz/orb/maptile)
 ========
 
 Package orb/maptile provides types and methods for working with

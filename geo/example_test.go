@@ -3,8 +3,8 @@ package geo_test
 import (
 	"fmt"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/geo"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/geo"
 )
 
 func ExampleArea() {

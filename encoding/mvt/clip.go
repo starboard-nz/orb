@@ -1,8 +1,8 @@
 package mvt
 
 import (
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/clip"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/clip"
 )
 
 var (

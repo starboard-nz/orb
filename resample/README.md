@@ -1,4 +1,4 @@
-orb/resample [![Godoc Reference](https://godoc.org/github.com/xerra-eo/orb/resample?status.svg)](https://godoc.org/github.com/xerra-eo/orb/resample)
+orb/resample [![Godoc Reference](https://godoc.org/github.com/starboard-nz/orb/resample?status.svg)](https://godoc.org/github.com/starboard-nz/orb/resample)
 ============
 
 Package orb/resample has a couple functions for resampling line geometry

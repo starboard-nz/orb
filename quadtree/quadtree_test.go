@@ -6,8 +6,8 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/planar"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/planar"
 )
 
 func TestNew(t *testing.T) {

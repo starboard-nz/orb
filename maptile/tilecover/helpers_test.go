@@ -3,7 +3,7 @@ package tilecover
 import (
 	"testing"
 
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 func TestGeometry(t *testing.T) {

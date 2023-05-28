@@ -6,9 +6,9 @@ import (
 	"math"
 	"math/bits"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/geojson"
-	"github.com/xerra-eo/orb/internal/mercator"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/geojson"
+	"github.com/starboard-nz/orb/internal/mercator"
 )
 
 // Tiles is a set of tiles, later we can add methods to this.

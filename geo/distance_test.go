@@ -4,7 +4,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 var epsilon = 1e-6

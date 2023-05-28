@@ -1,6 +1,6 @@
 package geojson
 
-import "github.com/xerra-eo/orb"
+import "github.com/starboard-nz/orb"
 
 // BBox is for the geojson bbox attribute which is an array with all axes
 // of the most southwesterly point followed by all axes of the more northeasterly point.
