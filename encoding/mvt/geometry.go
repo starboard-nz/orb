@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/encoding/mvt/vectortile"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/encoding/mvt/vectortile"
 )
 
 const (

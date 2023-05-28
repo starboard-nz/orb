@@ -4,8 +4,8 @@ import (
 	"math"
 	"testing"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/internal/mercator"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/internal/mercator"
 )
 
 func TestMercator(t *testing.T) {

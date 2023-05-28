@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 // DistanceFromSegment returns the point's distance from the segment [a, b].

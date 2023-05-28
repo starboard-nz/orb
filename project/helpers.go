@@ -2,7 +2,7 @@
 // along with helpers to apply them to orb geometry types.
 package project
 
-import "github.com/xerra-eo/orb"
+import "github.com/starboard-nz/orb"
 
 // Geometry is a helper to project any geomtry.
 func Geometry(g orb.Geometry, proj orb.Projection) orb.Geometry {

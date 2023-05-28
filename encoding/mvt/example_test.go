@@ -3,10 +3,10 @@ package mvt_test
 import (
 	"log"
 
-	"github.com/xerra-eo/orb/encoding/mvt"
-	"github.com/xerra-eo/orb/geojson"
-	"github.com/xerra-eo/orb/maptile"
-	"github.com/xerra-eo/orb/simplify"
+	"github.com/starboard-nz/orb/encoding/mvt"
+	"github.com/starboard-nz/orb/geojson"
+	"github.com/starboard-nz/orb/maptile"
+	"github.com/starboard-nz/orb/simplify"
 )
 
 func ExampleMarshal() {

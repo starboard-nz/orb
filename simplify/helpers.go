@@ -1,7 +1,7 @@
 // Package simplify implements several reducing/simplifying functions for `orb.Geometry` types.
 package simplify
 
-import "github.com/xerra-eo/orb"
+import "github.com/starboard-nz/orb"
 
 type simplifier interface {
 	simplify(orb.LineString, bool) (orb.LineString, []int)

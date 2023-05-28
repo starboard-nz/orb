@@ -4,9 +4,9 @@ import (
 	"math"
 	"math/bits"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/internal/mercator"
-	"github.com/xerra-eo/orb/maptile"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/internal/mercator"
+	"github.com/starboard-nz/orb/maptile"
 )
 
 type projection struct {

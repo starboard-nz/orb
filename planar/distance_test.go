@@ -3,7 +3,7 @@ package planar
 import (
 	"testing"
 
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 func TestDistance(t *testing.T) {

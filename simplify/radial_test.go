@@ -4,8 +4,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/planar"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/planar"
 )
 
 func TestRadial(t *testing.T) {

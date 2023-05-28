@@ -3,7 +3,7 @@ package length
 import (
 	"fmt"
 
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 // Length returns the length of the boundary of the geometry

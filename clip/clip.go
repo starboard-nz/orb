@@ -1,7 +1,7 @@
 package clip
 
 import (
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 // Code based on https://github.com/mapbox/lineclip
@@ -150,9 +150,11 @@ func ring(box orb.Bound, in orb.Ring) orb.Ring {
 }
 
 // bitCode returns the point position relative to the bbox:
-//         left  mid  right
-//    top  1001  1000  1010
-//    mid  0001  0000  0010
+//
+//	     left  mid  right
+//	top  1001  1000  1010
+//	mid  0001  0000  0010
+//
 // bottom  0101  0100  0110
 func bitCode(b orb.Bound, p orb.Point) int {
 	code := 0

@@ -1,8 +1,8 @@
 package simplify
 
 import (
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/planar"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/planar"
 )
 
 var _ orb.Simplifier = &DouglasPeuckerSimplifier{}

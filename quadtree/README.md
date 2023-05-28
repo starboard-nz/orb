@@ -1,4 +1,4 @@
-orb/quadtree [![Godoc Reference](https://godoc.org/github.com/xerra-eo/orb/quadtree?status.svg)](https://godoc.org/github.com/xerra-eo/orb/quadtree)
+orb/quadtree [![Godoc Reference](https://godoc.org/github.com/starboard-nz/orb/quadtree?status.svg)](https://godoc.org/github.com/starboard-nz/orb/quadtree)
 ============
 
 Package quadtree implements a quadtree using rectangular partitions.
