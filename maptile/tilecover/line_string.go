@@ -3,8 +3,8 @@ package tilecover
 import (
 	"math"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/maptile"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/maptile"
 )
 
 // LineString creates a tile cover for the line string.

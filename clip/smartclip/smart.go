@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/clip"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/clip"
 )
 
 // Geometry will do a smart more involved clipping and wrapping of the geometry.
@@ -338,11 +338,13 @@ func smartWrap(box orb.Bound, input []orb.LineString, o orb.Orientation) orb.Mul
 
 const notOnSide = 0xFF
 
-//    4
-//   +-+
+//	 4
+//	+-+
+//
 // 1 | | 3
-//   +-+
-//    2
+//
+//	+-+
+//	 2
 func pointSide(b orb.Bound, p orb.Point) uint8 {
 	if p[1] == b.Max[1] {
 		return 4

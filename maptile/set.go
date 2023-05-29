@@ -1,7 +1,7 @@
 package maptile
 
 import (
-	"github.com/xerra-eo/orb/geojson"
+	"github.com/starboard-nz/orb/geojson"
 )
 
 // Set is a map/hash of tiles.

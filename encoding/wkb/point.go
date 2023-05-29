@@ -6,7 +6,7 @@ import (
 	"io"
 	"math"
 
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 func unmarshalPoints(order byteOrder, data []byte) ([]orb.Point, error) {

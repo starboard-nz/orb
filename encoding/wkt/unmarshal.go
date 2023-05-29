@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 var (
@@ -194,6 +194,7 @@ func splitGeometryCollection(s string) (r []string) {
 /*
 unmarshal return a geometry by parse wkt string
 order:
+
 	GEOMETRYCOLLECTION
 	MULTIPOINT
 	POINT

@@ -1,4 +1,4 @@
-orb/project [![Godoc Reference](https://godoc.org/github.com/xerra-eo/orb/project?status.svg)](https://godoc.org/github.com/xerra-eo/orb/project)
+orb/project [![Godoc Reference](https://godoc.org/github.com/starboard-nz/orb/project?status.svg)](https://godoc.org/github.com/starboard-nz/orb/project)
 ===========
 
 Package orb/project has helper function for projection geometries.
@@ -34,4 +34,3 @@ Find centroid of polygon in Mercator projection:
 	fmt.Println(centroid)
 	// Output:
 	// [-122.41574403384001 37.77909471899779]
-

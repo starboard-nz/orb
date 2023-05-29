@@ -3,7 +3,7 @@
 package resample
 
 import (
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 // Resample converts the line string into totalPoints-1 evenly spaced segments.

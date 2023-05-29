@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 // A Feature corresponds to GeoJSON feature object

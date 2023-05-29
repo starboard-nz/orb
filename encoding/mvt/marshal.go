@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/xerra-eo/orb/encoding/mvt/vectortile"
-	"github.com/xerra-eo/orb/geojson"
+	"github.com/starboard-nz/orb/encoding/mvt/vectortile"
+	"github.com/starboard-nz/orb/geojson"
 
 	"github.com/gogo/protobuf/proto"
 )

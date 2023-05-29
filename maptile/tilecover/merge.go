@@ -1,6 +1,6 @@
 package tilecover
 
-import "github.com/xerra-eo/orb/maptile"
+import "github.com/starboard-nz/orb/maptile"
 
 // MergeUp will merge up the tiles in a given set up to the
 // the give min zoom. Tiles will be merged up only if all 4 siblings

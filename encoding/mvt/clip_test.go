@@ -4,8 +4,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/geojson"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/geojson"
 )
 
 func TestLayersClip(t *testing.T) {

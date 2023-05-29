@@ -1,8 +1,8 @@
 package mvt
 
 import (
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/planar"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/planar"
 )
 
 // Simplify will run all the geometry of all the layers through the provided simplifer.

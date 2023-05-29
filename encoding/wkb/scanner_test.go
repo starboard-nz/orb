@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/xerra-eo/orb"
+	"github.com/starboard-nz/orb"
 )
 
 var SRID = []byte{215, 15, 0, 0}

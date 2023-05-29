@@ -8,11 +8,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/geo"
-	"github.com/xerra-eo/orb/geojson"
-	"github.com/xerra-eo/orb/maptile"
-	"github.com/xerra-eo/orb/planar"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/geo"
+	"github.com/starboard-nz/orb/geojson"
+	"github.com/starboard-nz/orb/maptile"
+	"github.com/starboard-nz/orb/planar"
 )
 
 func TestTestdata(t *testing.T) {

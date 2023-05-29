@@ -3,8 +3,8 @@ package clip_test
 import (
 	"fmt"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/clip"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/clip"
 )
 
 func ExampleGeometry() {

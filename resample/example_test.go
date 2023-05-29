@@ -3,9 +3,9 @@ package resample_test
 import (
 	"fmt"
 
-	"github.com/xerra-eo/orb"
-	"github.com/xerra-eo/orb/planar"
-	"github.com/xerra-eo/orb/resample"
+	"github.com/starboard-nz/orb"
+	"github.com/starboard-nz/orb/planar"
+	"github.com/starboard-nz/orb/resample"
 )
 
 func ExampleResample() {

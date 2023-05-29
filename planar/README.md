@@ -1,4 +1,4 @@
-orb/planar [![Godoc Reference](https://godoc.org/github.com/paulmach/planar/geo?status.svg)](https://godoc.org/github.com/xerra-eo/orb/planar)
+orb/planar [![Godoc Reference](https://godoc.org/github.com/paulmach/planar/geo?status.svg)](https://godoc.org/github.com/starboard-nz/orb/planar)
 ==========
 
 The geometries defined in the `orb` package are generic 2d geometries.
