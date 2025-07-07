@@ -50,11 +50,22 @@ func (f Feature) MarshalJSON() ([]byte, error) {
 		tmp = make(map[string]interface{}, 4)
 	}
 
-	tmp["id"] = f.ID
+	if f.ID != nil {
+		tmp["id"] = f.ID
+	}
+
 	tmp["type"] = "Feature"
-	tmp["Properties"] = f.Properties
-	tmp["BBox"] = f.BBox
-	tmp["Geometry"] = NewGeometry(f.Geometry)
+	tmp["properties"] = f.Properties
+
+	if f.BBox != nil {
+		tmp["bbox"] = f.BBox
+	}
+
+	if f.Geometry != nil {
+		tmp["geometry"] = NewGeometry(f.Geometry)
+	} else {
+		tmp["geometry"] = nil
+	}
 
 	if len(f.Properties) == 0 {
 		tmp["properties"] = nil
@@ -109,12 +120,10 @@ func (f *Feature) UnmarshalJSON(data []byte) error {
 			if err != nil {
 				return fmt.Errorf("geojson: invalid geometry: %w", err)
 			}
-			if geom != nil {
-				if geom.Coordinates == nil && geom.Geometries == nil {
-					return ErrInvalidGeometry
-				}
-				jf.Geometry = geom.Geometry()
+			if geom.Coordinates == nil && geom.Geometries == nil {
+				return ErrInvalidGeometry
 			}
+			jf.Geometry = geom.Geometry()
 		case "properties":
 			err := json.Unmarshal(value, &jf.Properties)
 			if err != nil {
