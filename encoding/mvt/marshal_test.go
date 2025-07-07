@@ -437,36 +437,30 @@ func TestMarshal_ID(t *testing.T) {
 	t.Run("unmarshaled int from json", func(t *testing.T) {
 		f.ID = 123
 
-		t.Log("Marshalling")
 		data, err := fc.MarshalJSON()
 		if err != nil {
 			t.Fatalf("json marshal error: %v", err)
 		}
 
-		t.Log("Unmarshalling fc")
 		fc, err = geojson.UnmarshalFeatureCollection(data)
 		if err != nil {
 			t.Fatalf("unmarshal json error: %v", err)
 		}
 
-		t.Log("Checking marshal to float64")
 		if _, ok := fc.Features[0].ID.(float64); !ok {
 			t.Errorf("json should unmarshal numbers to float64: %T", fc.Features[0].ID)
 		}
 
-		t.Log("Marshalling to MVT")
 		data, err = Marshal(NewLayers(map[string]*geojson.FeatureCollection{"roads": fc}))
 		if err != nil {
 			t.Errorf("marshal error: %v", err)
 		}
 
-		t.Log("Unmarshalling MVT")
 		ls, err := Unmarshal(data)
 		if err != nil {
 			t.Errorf("unmarshal error: %v", err)
 		}
 
-		t.Log("Checking id type")
 		id := ls.ToFeatureCollections()["roads"].Features[0].ID
 		if _, ok := id.(float64); !ok {
 			// this is to be consistent with json decoding
