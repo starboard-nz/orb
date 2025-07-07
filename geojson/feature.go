@@ -118,7 +118,7 @@ func (f *Feature) UnmarshalJSON(data []byte) error {
 			geom := &Geometry{}
 			err := json.Unmarshal(value, geom)
 			if err != nil {
-				return fmt.Errorf("geojson: invalid geometry: %w", err)
+				return err
 			}
 			if geom.Coordinates == nil && geom.Geometries == nil {
 				return ErrInvalidGeometry
