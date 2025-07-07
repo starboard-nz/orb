@@ -14,6 +14,11 @@ type Feature struct {
 	BBox       BBox         `json:"bbox,omitempty"`
 	Geometry   orb.Geometry `json:"geometry"`
 	Properties Properties   `json:"properties"`
+
+	// ExtraMembers can be used to encoded/decode extra key/members in
+	// the base of the feature collection. Note that keys of "type", "bbox"
+	// and "features" will not work as those are reserved by the GeoJSON spec.
+	ExtraMembers Properties `json:"-"`
 }
 
 // NewFeature creates and initializes a GeoJSON feature given the required attributes.
@@ -38,19 +43,24 @@ var _ orb.Pointer = &Feature{}
 // It will handle the encoding of all the child geometries.
 // Alternately one can call json.Marshal(f) directly for the same result.
 func (f Feature) MarshalJSON() ([]byte, error) {
-	jf := &jsonFeature{
-		ID:         f.ID,
-		Type:       "Feature",
-		Properties: f.Properties,
-		BBox:       f.BBox,
-		Geometry:   NewGeometry(f.Geometry),
+	var tmp map[string]interface{}
+	if f.ExtraMembers != nil {
+		tmp = f.ExtraMembers.Clone()
+	} else {
+		tmp = make(map[string]interface{}, 4)
 	}
 
-	if len(jf.Properties) == 0 {
-		jf.Properties = nil
+	tmp["id"] = f.ID
+	tmp["type"] = "Feature"
+	tmp["Properties"] = f.Properties
+	tmp["BBox"] = f.BBox
+	tmp["Geometry"] = NewGeometry(f.Geometry)
+
+	if len(f.Properties) == 0 {
+		tmp["properties"] = nil
 	}
 
-	return json.Marshal(jf)
+	return json.Marshal(tmp)
 }
 
 // UnmarshalFeature decodes the data into a GeoJSON feature.
@@ -68,39 +78,74 @@ func UnmarshalFeature(data []byte) (*Feature, error) {
 // UnmarshalJSON handles the correct unmarshalling of the data
 // into the orb.Geometry types.
 func (f *Feature) UnmarshalJSON(data []byte) error {
-	jf := &jsonFeature{}
-	err := json.Unmarshal(data, &jf)
+	tmp := make(map[string]nocopyRawMessage, 5)
+
+	err := json.Unmarshal(data, &tmp)
 	if err != nil {
 		return err
+	}
+
+	jf := &Feature{}
+	for key, value := range tmp {
+		switch key {
+		case "id":
+			err := json.Unmarshal(value, &jf.ID)
+			if err != nil {
+				return fmt.Errorf("geojson: invalid id: %w", err)
+			}
+		case "type":
+			err := json.Unmarshal(value, &jf.Type)
+			if err != nil {
+				return fmt.Errorf("geojson: invalid type: %w", err)
+			}
+		case "bbox":
+			err := json.Unmarshal(value, &jf.BBox)
+			if err != nil {
+				return fmt.Errorf("geojson: invalid bbox: %w", err)
+			}
+		case "geometry":
+			geom := &Geometry{}
+			err := json.Unmarshal(value, geom)
+			if err != nil {
+				return fmt.Errorf("geojson: invalid geometry: %w", err)
+			}
+			if geom != nil {
+				if geom.Coordinates == nil && geom.Geometries == nil {
+					return ErrInvalidGeometry
+				}
+				jf.Geometry = geom.Geometry()
+			}
+		case "properties":
+			err := json.Unmarshal(value, &jf.Properties)
+			if err != nil {
+				return fmt.Errorf("geojson: invalid properties: %w", err)
+			}
+		default:
+			if jf.ExtraMembers == nil {
+				jf.ExtraMembers = Properties{}
+			}
+
+			var val interface{}
+			err := json.Unmarshal(value, &val)
+			if err != nil {
+				return err
+			}
+			jf.ExtraMembers[key] = val
+		}
 	}
 
 	if jf.Type != "Feature" {
 		return fmt.Errorf("geojson: not a feature: type=%s", jf.Type)
 	}
 
-	var g orb.Geometry
-	if jf.Geometry != nil {
-		if jf.Geometry.Coordinates == nil && jf.Geometry.Geometries == nil {
-			return ErrInvalidGeometry
-		}
-		g = jf.Geometry.Geometry()
-	}
-
 	*f = Feature{
-		ID:         jf.ID,
-		Type:       jf.Type,
-		Properties: jf.Properties,
-		BBox:       jf.BBox,
-		Geometry:   g,
+		ID:           jf.ID,
+		Type:         jf.Type,
+		Properties:   jf.Properties,
+		BBox:         jf.BBox,
+		Geometry:     jf.Geometry,
+		ExtraMembers: jf.ExtraMembers,
 	}
 
 	return nil
-}
-
-type jsonFeature struct {
-	ID         interface{} `json:"id,omitempty"`
-	Type       string      `json:"type"`
-	BBox       BBox        `json:"bbox,omitempty"`
-	Geometry   *Geometry   `json:"geometry"`
-	Properties Properties  `json:"properties"`
 }
