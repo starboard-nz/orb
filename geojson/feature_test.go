@@ -216,7 +216,7 @@ func TestMarshalFeatureID(t *testing.T) {
 		t.Fatalf("should marshal, %v", err)
 	}
 
-	if !bytes.Equal(data, []byte(`{"id":"asdf","type":"Feature","geometry":null,"properties":null}`)) {
+	if !bytes.Equal(data, []byte(`{"geometry":null,"id":"asdf","properties":null,"type":"Feature"}`)) {
 		t.Errorf("data not correct")
 		t.Logf("%v", string(data))
 	}
@@ -228,7 +228,7 @@ func TestMarshalFeatureID(t *testing.T) {
 
 	}
 
-	if !bytes.Equal(data, []byte(`{"id":123,"type":"Feature","geometry":null,"properties":null}`)) {
+	if !bytes.Equal(data, []byte(`{"geometry":null,"id":123,"properties":null,"type":"Feature"}`)) {
 		t.Errorf("data not correct")
 		t.Logf("%v", string(data))
 	}
@@ -275,7 +275,7 @@ func TestMarshalRing(t *testing.T) {
 		t.Fatalf("should marshal, %v", err)
 	}
 
-	if !bytes.Equal(data, []byte(`{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[0,0],[1,1],[2,1],[0,0]]]},"properties":null}`)) {
+	if !bytes.Equal(data, []byte(`{"geometry":{"type":"Polygon","coordinates":[[[0,0],[1,1],[2,1],[0,0]]]},"properties":null,"type":"Feature"}`)) {
 		t.Errorf("data not correct")
 		t.Logf("%v", string(data))
 	}

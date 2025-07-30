@@ -50,7 +50,7 @@ func ExampleFeatureCollection_foreignMembers() {
 	// Output:
 	// [102 0.5]
 	// Title as Foreign Member
-	// {"features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[102,0.5]},"properties":{"prop0":"value0"}}],"title":"Title as Foreign Member","type":"FeatureCollection"}
+	// {"features":[{"geometry":{"type":"Point","coordinates":[102,0.5]},"properties":{"prop0":"value0"},"type":"Feature"}],"title":"Title as Foreign Member","type":"FeatureCollection"}
 }
 
 // MyFeatureCollection is a depricated/no longer supported way to extract
@@ -168,7 +168,6 @@ func ExampleFeatureCollection_MarshalJSON() {
 	// {
 	//  "features": [
 	//   {
-	//    "type": "Feature",
 	//    "geometry": {
 	//     "type": "Point",
 	//     "coordinates": [
@@ -176,7 +175,8 @@ func ExampleFeatureCollection_MarshalJSON() {
 	//      2
 	//     ]
 	//    },
-	//    "properties": null
+	//    "properties": null,
+	//    "type": "Feature"
 	//   }
 	//  ],
 	//  "type": "FeatureCollection"
